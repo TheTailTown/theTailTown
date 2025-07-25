@@ -14,11 +14,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>TailTown</title>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const gallery = document.querySelector(".horizontal-scroll-gallery");
+        const gallery = document.querySelector(".gallery-scroll");
         if (gallery) {
           gallery.addEventListener("wheel", function (evt) {
             evt.preventDefault();
@@ -26,7 +26,9 @@
           });
         }
 
-        const testimonialScroll = document.querySelector(".testimonial-scroll");
+        const testimonialScroll = document.querySelector(
+          ".testimonials-scroll"
+        );
 
         if (testimonialScroll) {
           testimonialScroll.addEventListener("wheel", function (evt) {
@@ -34,13 +36,29 @@
             testimonialScroll.scrollLeft += evt.deltaY;
           });
         }
+
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const text = btn.dataset.copy;
+            navigator.clipboard.writeText(text).then(() => {
+              const icon = btn.querySelector("i");
+              icon.classList.remove("bi-clipboard");
+              icon.classList.add("bi-clipboard-check");
+
+              setTimeout(() => {
+                icon.classList.remove("bi-clipboard-check");
+                icon.classList.add("bi-clipboard");
+              }, 1500);
+            });
+          });
+        });
       });
     </script>
   </head>
   <body>
     <div class="container-fluid p-0 m-0">
-      <div class="navbar navbar-expand-md w-100" id="menubar">
-        <a class="navbar-brand" href="#">
+      <nav class="navbar navbar-expand-md w-100" id="menubar">
+        <a class="navbar-brand ms-5" href="#">
           <h1>
             <span class="brandname-tail">Tail</span
             ><span class="brandname-town">Town</span>
@@ -51,19 +69,19 @@
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#mobile-menu"
-          aria-controls="mobile-menu"
+          data-bs-target="#menu-list"
+          aria-controls="menu-list"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="mobile-menu" id>
-          <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="menu-list">
+          <ul class="navbar-nav m-auto ps-5 ps-md-0 gap-md-5">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item">
-              <a class="nav-link" href="#service">Service</a>
+              <a class="nav-link" href="#services">Services</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#gallery">Gallery</a>
@@ -73,278 +91,497 @@
             </li>
           </ul>
         </div>
-      </div>
-      <section id="home">
-        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="./image.webp" class="d-block w-100" alt="Slide 1" />
-            </div>
-            <div class="carousel-item">
-              <img src="./image.webp" class="d-block w-100" alt="Slide 2" />
-            </div>
-            <div class="carousel-item">
-              <img src="./image.webp" class="d-block w-100" alt="Slide 3" />
-            </div>
+      </nav>
+      <hr class="nav-hr" />
+
+      <section id="home" class="container-fluid py-5">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start p-5">
+            <h1 class="display-4 fw-bold">Welcome to Tail Town</h1>
+            <p class="lead">
+              Your pet's second home. Safe, loving care while you're away -
+              daycare, boarding, grooming, and more.
+            </p>
+            <a href="#about" class="btn btn-lg mt-3 home-btn">Learn More</a>
           </div>
 
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#mainCarousel"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#mainCarousel"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="col-md-6 px-5">
+            <div
+              id="homeCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner rounded-4 shadow">
+                <div class="carousel-item active">
+                  <img src="image.webp" class="d-block w-100" alt="Pet 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="image.webp" class="d-block w-100" alt="Pet 2" />
+                </div>
+                <div class="carousel-item">
+                  <img src="image.webp" class="d-block w-100" alt="Pet 3" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="service" >
+      <section id="services" class="container py-5">
+        <h1 class="text-center mb-5 display-4">Our Services</h1>
+        <div class="row g-4 justify-content-center">
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Grooming"
+                  />
+                  <h5>Grooming</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Bathing, brushing, nail trimming, and hygiene care to keep
+                    your dog clean and fresh.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
+                    class="icon mb-3"
+                    alt="Feeding"
+                  />
+                  <h5>Feeding</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Customized feeding schedules and dietary management to keep
+                    your dog nourished.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3374/3374596.png"
+                    class="icon mb-3"
+                    alt="Health"
+                  />
+                  <h5>Health Monitoring</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Daily health checks and wellness monitoring to ensure your
+                    dog stays healthy.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Playtime"
+                  />
+                  <h5>Exercise & Play</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Playtime, walks, and toys that keep dogs physically active
+                    and happy.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Transport"
+                  />
+                  <h5>Pet Transport</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Convenient and safe transport for your pet, completely free
+                    within our service area.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Boarding"
+                  />
+                  <h5>Boarding</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Available for daytime stays, overnight boarding, and
+                    extended long-term care.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Behavior"
+                  />
+                  <h5>Behavior Tracking</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Our team observes and logs behavior to detect anxiety or
+                    other issues early.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Vet"
+                  />
+                  <h5>Vet Support</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Access to emergency vet care and regular check-ups in case
+                    of need.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="flip-card mx-2 fs-6">
+              <div class="flip-card-inner">
+                <div class="flip-card-front text-center p-4">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                    class="icon mb-3"
+                    alt="Tailored Care"
+                  />
+                  <h5>Tailored Care</h5>
+                </div>
+                <div class="flip-card-back p-4">
+                  <p>
+                    Care routines tailored to your dog's age, breed, and
+                    personality.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="py-5">
+        <div class="container-fluid">
+          <h1 class="text-center mb-4 display-4">Gallery</h1>
+          <div class="gallery-scroll d-flex overflow-auto gap-3 py-2">
+            <img
+              src="image.webp"
+              alt="Pet playing"
+              class="gallery-img rounded shadow"
+            />
+            <img
+              src="image.webp"
+              alt="Pet with owner"
+              class="gallery-img rounded shadow"
+            />
+            <img
+              src="image.webp"
+              alt="Group play"
+              class="gallery-img rounded shadow"
+            />
+            <img
+              src="image.webp"
+              alt="Pet training"
+              class="gallery-img rounded shadow"
+            />
+            <img
+              src="image.webp"
+              alt="Owner and pet"
+              class="gallery-img rounded shadow"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="py-5">
+        <div class="container-fluid">
+          <h2 class="text-center mb-4 display-4">What Our Clients Say</h2>
+          <div class="testimonials-scroll d-flex overflow-auto gap-3 p-4">
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Tail Town cared for Bruno like family! Daily photos kept us
+                connected."
+              </p>
+              <p class="fw-bold text-end">— Rahul & Bruno</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Excellent grooming and attentive staff. Luna looks fabulous."
+              </p>
+              <p class="fw-bold text-end">— Shreya</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Our pup's boarding experience was top-notch. We'll definitely
+                return."
+              </p>
+              <p class="fw-bold text-end">— Ankit & Daisy</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Our pup's boarding experience was top-notch. We'll definitely
+                return."
+              </p>
+              <p class="fw-bold text-end">— Ankit & Daisy</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Our pup's boarding experience was top-notch. We'll definitely
+                return."
+              </p>
+              <p class="fw-bold text-end">— Ankit & Daisy</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Our pup's boarding experience was top-notch. We'll definitely
+                return."
+              </p>
+              <p class="fw-bold text-end">— Ankit & Daisy</p>
+            </div>
+            <div class="testimonial-card p-4 bg-white rounded shadow">
+              <p>
+                "Our pup's boarding experience was top-notch. We'll definitely
+                return."
+              </p>
+              <p class="fw-bold text-end">— Ankit & Daisy</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section py-5 px-3 px-md-5 mx-2 mx-md-0">
         <div class="container">
-          <h2 class="text-center mb-4">Our Services</h2>
-          <p class="text-center mb-3">
-            We offer everything your dog needs to feel safe, happy, and loved
-            while you're away.
-          </p>
-
-          <div class="row g-4 text-center my-3">
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Grooming Services</h5>
-                <p>
-                  Bathing, brushing, nail trimming, and hygiene care for a fresh
-                  and healthy pup.
-                </p>
-              </div>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-6 about-content text-center shadow">
+              <h2 class="mb-3 section-title text-center">About Tail Town</h2>
+              <p class="lead text-center">
+                🐾 Welcome to <strong>Tail Town - Hyderabad</strong>, your pet's
+                second home!
+              </p>
+              <p>
+                We understand that pets are family — and they deserve the same
+                love, care, and comfort even when you're away.
+              </p>
+              <p>
+                Whether it's a few hours or a long vacation, our cozy, clean,
+                and secure facility offers
+                <strong
+                  >daycare, boarding, grooming, playtime, healthy meals</strong
+                >, and <strong>24/7 care</strong>.
+              </p>
+              <p>
+                Our trained staff treats each pet like their own, sharing daily
+                photo & video updates with you. Tail Town is built from a love
+                for animals and a dream to create a place where pets truly feel
+                at home. ❤️
+              </p>
             </div>
 
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Feeding & Nutrition</h5>
-                <p>
-                  Customized feeding schedules and dietary management to keep
-                  your dog nourished.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Health & Wellness</h5>
-                <p>
-                  Daily health checks and wellness monitoring to ensure your dog
-                  stays healthy.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Exercise & Enrichment</h5>
-                <p>
-                  Playtime, walks, and toys that keep dogs physically active and
-                  mentally stimulated.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Free Pick-up & Drop</h5>
-                <p>
-                  Convenient and safe transport for your pet, completely free
-                  within service zones.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Flexible Boarding</h5>
-                <p>
-                  Available for daytime stays, overnight boarding, and extended
-                  long-term care.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Behavioral Monitoring</h5>
-                <p>
-                  Our team observes and logs behavior to detect anxiety or other
-                  issues early.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Veterinary Support</h5>
-                <p>
-                  Access to emergency vet care and regular check-ups in case of
-                  need.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="service-box">
-                <h5>Personalized Care</h5>
-                <p>
-                  Care routines tailored to your dog's age, breed, and medical
-                  needs.
-                </p>
-              </div>
+            <!-- Image (Desktop) -->
+            <div class="col-md-6 d-none d-md-block text-center">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                alt="Happy Pet"
+                class="img-fluid rounded shadow about-pic"
+                style="max-height: 300px"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="gallery" >
-        <div class="container text-center">
-          <h2 class="mb-4">Our Happy Guests</h2>
-          <p class="mb-5">
-            Take a look at our furry friends enjoying their stay at TailTown!
-          </p>
-
-          <!-- Image Gallery -->
-          <div class="horizontal-scroll-gallery">
-            <img src="./image.webp" alt="Dog 1" class="gallery-img" />
-            <img src="./image.webp" alt="Dog 2" class="gallery-img" />
-            <img src="./image.webp" alt="Dog 3" class="gallery-img" />
-            <img src="./image.webp" alt="Dog 4" class="gallery-img" />
-            <img src="./image.webp" alt="Dog 5" class="gallery-img" />
-            <img src="./image.webp" alt="Dog 6" class="gallery-img" />
-          </div>
-        </div>
-      </section>
-      <section id="testimonial">
-        <div class="container text-center">
-          <!-- Testimonials -->
-          <h3 class="my-4">What Pet Parents Say</h3>
-          <div class="testimonial-scroll">
-            <div class="testimonial-box p-3">
-              <p>
-                "TailTown took amazing care of my lab, Bruno! He came home happy
-                and well-groomed."
-              </p>
-              <strong>- Anjali R.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "The free pick-up and drop was a life-saver. Great staff and
-                clean facility!"
-              </p>
-              <strong>- Rajesh P.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "Best boarding experience ever. They even customized meals for
-                my picky dog!"
-              </p>
-              <strong>- Sneha D.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "Best boarding experience ever. They even customized meals for
-                my picky dog!"
-              </p>
-              <strong>- Sneha D.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "Best boarding experience ever. They even customized meals for
-                my picky dog!"
-              </p>
-              <strong>- Sneha D.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "Best boarding experience ever. They even customized meals for
-                my picky dog!"
-              </p>
-              <strong>- Sneha D.</strong>
-            </div>
-            <div class="testimonial-box p-3">
-              <p>
-                "Best boarding experience ever. They even customized meals for
-                my picky dog!"
-              </p>
-              <strong>- Sneha D.</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="container-fluid">
-        <h2 class="text-center mb-4">Contact Us</h2>
+      <section id="contact" class="container py-5">
+        <h2 class="text-center mb-5 fw-bold">Contact Us</h2>
 
         <!-- Contact Info -->
-        <div class="row text-center justify-content-center mb-4">
-          <div class="col-md-4 mb-3">
-            <h5>Address</h5>
-            <p>123 Pet Street,<br />Tailtown, TX 75001</p>
+        <div class="row text-center justify-content-center mb-5 gx-4 gy-4">
+          <div class="col-md-4">
+            <div class="p-4 border shadow-lg h-100 contact-card">
+              <h5 class="mb-3">
+                <i class="bi bi-geo-alt-fill me-2"></i>Address
+              </h5>
+              <p class="mb-0">123 Pet Street,<br />Tailtown, TX 75001</p>
+            </div>
           </div>
-          <div class="col-md-4 mb-3">
-            <h5>Phone</h5>
-            <p>+91 9849043930<br />+91 9703883388</p>
+
+          <div class="col-md-4">
+            <div class="p-4 border shadow-lg h-100 contact-card">
+              <h5 class="mb-3"><i class="bi bi-phone me-2"></i>Phone</h5>
+              <p
+                class="mb-2 d-flex justify-content-center align-items-center gap-2"
+              >
+                <span>+91 9849043930</span>
+                <button
+                  class="btn btn-sm btn-outline-dark rounded-circle copy-btn"
+                  data-copy="+91 9849043930"
+                  title="Copy"
+                >
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </p>
+              <p
+                class="mb-0 d-flex justify-content-center align-items-center gap-2"
+              >
+                <span>+91 9703883388</span>
+                <button
+                  class="btn btn-sm btn-outline-dark rounded-circle copy-btn"
+                  data-copy="+91 9703883388"
+                  title="Copy"
+                >
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </p>
+            </div>
           </div>
-          <div class="col-md-4 mb-3">
-            <h5>Email</h5>
-            <p>tailtown2025@gmail.com</p>
+
+          <div class="col-md-4">
+            <div class="p-4 border shadow-lg h-100 contact-card">
+              <h5 class="mb-3">
+                <i class="bi bi-envelope-fill me-2"></i>Email
+              </h5>
+              <p
+                class="mb-0 d-flex justify-content-center align-items-center gap-2"
+              >
+                <span>tailtown2025@gmail.com</span>
+                <button
+                  class="btn btn-sm btn-outline-dark rounded-circle copy-btn"
+                  data-copy="tailtown2025@gmail.com"
+                  title="Copy"
+                >
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </p>
+            </div>
           </div>
         </div>
 
-        <div class="map-container my-5 mx-auto">
+        <!-- Google Map -->
+        <div
+          class="map-container mx-2 mx-md-auto rounded shadow"
+        >
           <iframe
             src="https://maps.google.com/maps?q=17.39528,78.58500&z=14&output=embed"
-            allowfullscreen
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
             loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </section>
+
+      <footer class="footer py-5">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-md-6 mb-4">
+              <h5 class="mb-3 text-uppercase fw-bold">Get in Touch</h5>
+              <p class="mb-1">123 Pet Street</p>
+              <p class="mb-1">Tailtown, TX 75001</p>
+              <p class="mb-1">
+                Phone:
+                <a href="tel:+919849043930" class="text-decoration-none"
+                  >+91 9849043930</a
+                >
+              </p>
+              <p>
+                Email:
+                <a
+                  href="mailto:tailtown2025@gmail.com"
+                  class="text-decoration-none"
+                  >tailtown2025@gmail.com</a
+                >
+              </p>
+            </div>  
+
+            <div class="col-md-4 mb-4">
+              <h5 class="mb-3 text-uppercase fw-bold">Follow Us</h5>
+              <a href="#" class="footer-icon mx-2 fs-4" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="footer-icon mx-2 fs-4" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="text-center mt-4 small text-secondary">
+            &copy; 2025 TailTown. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
 
-    <footer class="footer  py-4">
-      <div class="container-fluid">
-        <div class="row text-center justify-content-center">
-          <!-- Get in Touch -->
-          <div class="col-md-4 mb-4">
-            <h5>Get in Touch</h5>
-            <p>123 Pet Street<br />Tailtown, TX 75001</p>
-            <p>+91 9849043930<br />tailtown2025@gmail.com</p>
-          </div>
+    <a
+  href="https://wa.me/919703883388"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <i class="bi bi-whatsapp"></i>
+</a>
 
-          <!-- Follow Us -->
-          <div class="col-md-4 mb-4">
-            <h5>Follow Us</h5>
-            <a href="#" class="footer-icon"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="footer-icon"><i class="bi bi-instagram"></i></a>
-          </div>
-
-          <!-- Timings -->
-          <div class="col-md-4 mb-4">
-            <h5>Timings</h5>
-            <p>Mon - Fri: 9am - 6pm<br />Sat: 10am - 4pm<br />Sun: Closed</p>
-          </div>
-        </div>
-
-        <div class="text-center mt-3 small">
-          &copy; 2025 TailTown. All rights reserved.
-        </div>
-      </div>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
