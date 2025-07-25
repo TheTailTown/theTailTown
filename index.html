@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const gallery = document.querySelector(".horizontal-scroll-gallery");
+        if (gallery) {
+          gallery.addEventListener("wheel", function (evt) {
+            evt.preventDefault();
+            gallery.scrollLeft += evt.deltaY;
+          });
+        }
+
+        const testimonialScroll = document.querySelector(".testimonial-scroll");
+
+        if (testimonialScroll) {
+          testimonialScroll.addEventListener("wheel", function (evt) {
+            evt.preventDefault();
+            testimonialScroll.scrollLeft += evt.deltaY;
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid p-0 m-0">
+      <div class="navbar navbar-expand-md w-100" id="menubar">
+        <a class="navbar-brand" href="#">
+          <h1>
+            <span class="brandname-tail">Tail</span
+            ><span class="brandname-town">Town</span>
+          </h1>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mobile-menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mobile-menu" id>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#service">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section id="home">
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./image.webp" class="d-block w-100" alt="Slide 1" />
+            </div>
+            <div class="carousel-item">
+              <img src="./image.webp" class="d-block w-100" alt="Slide 2" />
+            </div>
+            <div class="carousel-item">
+              <img src="./image.webp" class="d-block w-100" alt="Slide 3" />
+            </div>
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="service" >
+        <div class="container">
+          <h2 class="text-center mb-4">Our Services</h2>
+          <p class="text-center mb-3">
+            We offer everything your dog needs to feel safe, happy, and loved
+            while you're away.
+          </p>
+
+          <div class="row g-4 text-center my-3">
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Grooming Services</h5>
+                <p>
+                  Bathing, brushing, nail trimming, and hygiene care for a fresh
+                  and healthy pup.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Feeding & Nutrition</h5>
+                <p>
+                  Customized feeding schedules and dietary management to keep
+                  your dog nourished.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Health & Wellness</h5>
+                <p>
+                  Daily health checks and wellness monitoring to ensure your dog
+                  stays healthy.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Exercise & Enrichment</h5>
+                <p>
+                  Playtime, walks, and toys that keep dogs physically active and
+                  mentally stimulated.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Free Pick-up & Drop</h5>
+                <p>
+                  Convenient and safe transport for your pet, completely free
+                  within service zones.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Flexible Boarding</h5>
+                <p>
+                  Available for daytime stays, overnight boarding, and extended
+                  long-term care.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Behavioral Monitoring</h5>
+                <p>
+                  Our team observes and logs behavior to detect anxiety or other
+                  issues early.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Veterinary Support</h5>
+                <p>
+                  Access to emergency vet care and regular check-ups in case of
+                  need.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="service-box">
+                <h5>Personalized Care</h5>
+                <p>
+                  Care routines tailored to your dog's age, breed, and medical
+                  needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" >
+        <div class="container text-center">
+          <h2 class="mb-4">Our Happy Guests</h2>
+          <p class="mb-5">
+            Take a look at our furry friends enjoying their stay at TailTown!
+          </p>
+
+          <!-- Image Gallery -->
+          <div class="horizontal-scroll-gallery">
+            <img src="./image.webp" alt="Dog 1" class="gallery-img" />
+            <img src="./image.webp" alt="Dog 2" class="gallery-img" />
+            <img src="./image.webp" alt="Dog 3" class="gallery-img" />
+            <img src="./image.webp" alt="Dog 4" class="gallery-img" />
+            <img src="./image.webp" alt="Dog 5" class="gallery-img" />
+            <img src="./image.webp" alt="Dog 6" class="gallery-img" />
+          </div>
+        </div>
+      </section>
+      <section id="testimonial">
+        <div class="container text-center">
+          <!-- Testimonials -->
+          <h3 class="my-4">What Pet Parents Say</h3>
+          <div class="testimonial-scroll">
+            <div class="testimonial-box p-3">
+              <p>
+                "TailTown took amazing care of my lab, Bruno! He came home happy
+                and well-groomed."
+              </p>
+              <strong>- Anjali R.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "The free pick-up and drop was a life-saver. Great staff and
+                clean facility!"
+              </p>
+              <strong>- Rajesh P.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "Best boarding experience ever. They even customized meals for
+                my picky dog!"
+              </p>
+              <strong>- Sneha D.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "Best boarding experience ever. They even customized meals for
+                my picky dog!"
+              </p>
+              <strong>- Sneha D.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "Best boarding experience ever. They even customized meals for
+                my picky dog!"
+              </p>
+              <strong>- Sneha D.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "Best boarding experience ever. They even customized meals for
+                my picky dog!"
+              </p>
+              <strong>- Sneha D.</strong>
+            </div>
+            <div class="testimonial-box p-3">
+              <p>
+                "Best boarding experience ever. They even customized meals for
+                my picky dog!"
+              </p>
+              <strong>- Sneha D.</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="container-fluid">
+        <h2 class="text-center mb-4">Contact Us</h2>
+
+        <!-- Contact Info -->
+        <div class="row text-center justify-content-center mb-4">
+          <div class="col-md-4 mb-3">
+            <h5>Address</h5>
+            <p>123 Pet Street,<br />Tailtown, TX 75001</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Phone</h5>
+            <p>+91 9849043930<br />+91 9703883388</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Email</h5>
+            <p>tailtown2025@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="map-container my-5 mx-auto">
+          <iframe
+            src="https://maps.google.com/maps?q=17.39528,78.58500&z=14&output=embed"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer  py-4">
+      <div class="container-fluid">
+        <div class="row text-center justify-content-center">
+          <!-- Get in Touch -->
+          <div class="col-md-4 mb-4">
+            <h5>Get in Touch</h5>
+            <p>123 Pet Street<br />Tailtown, TX 75001</p>
+            <p>+91 9849043930<br />tailtown2025@gmail.com</p>
+          </div>
+
+          <!-- Follow Us -->
+          <div class="col-md-4 mb-4">
+            <h5>Follow Us</h5>
+            <a href="#" class="footer-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer-icon"><i class="bi bi-instagram"></i></a>
+          </div>
+
+          <!-- Timings -->
+          <div class="col-md-4 mb-4">
+            <h5>Timings</h5>
+            <p>Mon - Fri: 9am - 6pm<br />Sat: 10am - 4pm<br />Sun: Closed</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-3 small">
+          &copy; 2025 TailTown. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
